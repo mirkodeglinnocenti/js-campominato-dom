@@ -16,7 +16,9 @@ console.log(grigliaElement);
 
 playButtonElement.addEventListener ('click' , function() {
 
-    grigliaElement.innerHTML = '';
+
+    // Cancella gli elementi dentro la griglia
+    restart (grigliaElement);
 
 
     for (let i = 0; i < celleTotali; i++ ) {
@@ -62,3 +64,44 @@ playButtonElement.addEventListener ('click' , function() {
 })
 
 
+// Funzioni
+
+// Funzione restart
+function restart (elemento) {
+    elemento.innerHTML = '';
+}
+
+// Funzione numeri random
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min); 
+  }
+
+
+
+// no numeri doppi
+// nuimeri compresi tra 1 3 numeroDiCelle
+// const bombe = [5, 54, 9, 21, 36, 74]
+// startGame()
+// bombe.includes('5')
+
+const bombe = [];
+let bomba;
+
+
+while ( bombe.length < 16 ) {
+
+    bomba = getRandomInt( 1 , celleTotali);
+
+    if(!bombe.includes(bomba)) {
+        bombe.push(bomba);
+    } else {
+        continue;
+    }
+
+    console.log(bomba , bombe.includes(bomba));
+
+}
+
+console.log(bombe)
