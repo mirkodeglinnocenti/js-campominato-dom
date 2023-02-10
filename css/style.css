@@ -1,0 +1,63 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main{
+    background-color: cadetblue;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: aliceblue;
+    min-height: 100vh;
+}
+
+.griglia {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 50px 0;
+}
+
+.cella {
+    border: 1px solid black;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+}
+
+.info-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.game__title {
+    font-size: 50px;
+    font-weight: bold;
+    color: cadetblue;
+    margin-bottom: 20px;
+}
+
+.game__button {
+    color: white;
+    background-color: cadetblue;
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: 1px solid cadetblue;
+}
+
+.game__button:hover {
+    color: cadetblue;
+    background-color: white;
+}
+
+.background-secondary{
+    background-color: aquamarine;
+}
