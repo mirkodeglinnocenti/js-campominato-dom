@@ -58,6 +58,10 @@ main{
     background-color: white;
 }
 
-.background-secondary{
-    background-color: aquamarine;
+.background-red{
+    background-color: lightcoral;
+}
+
+.background-light-blue{
+    background-color: lightsteelblue;
 }

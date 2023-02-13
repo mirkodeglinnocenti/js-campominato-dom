@@ -21,6 +21,28 @@ playButtonElement.addEventListener ('click' , function() {
     restart (grigliaElement);
 
 
+    // no numeri doppi / numeri compresi tra 1 e celle totali 
+
+    const bombe = [];
+    let bomba;
+
+    while ( bombe.length < 16 ) {
+
+        bomba = getRandomInt( 1 , celleTotali);
+
+        if(!bombe.includes(bomba)) {
+            bombe.push(bomba);
+        } else {
+            continue;
+        }
+
+        console.log(bomba , bombe.includes(bomba));
+
+    }
+
+    console.log(bombe)
+
+
     for (let i = 0; i < celleTotali; i++ ) {
 
         let numeroIncremento = i + 1; //per far partire da 1 e arrivare a 100, senza questo passaggio partirebbe da 0 e si fermerebbe a 99
@@ -42,21 +64,27 @@ playButtonElement.addEventListener ('click' , function() {
         grigliaElement.append(creazioneDiv);
         
 
-        // al click
+        // THIS
 
-        const cellaCreataElement = document.querySelector('.cella:last-child');
-
-        console.log(cellaCreataElement);
-
-        cellaCreataElement.addEventListener ( 'click' , function() {
-
-            console.log(numeroIncremento);
-
-            creazioneDiv.classList.add('background-secondary');
-
-        })
+        creazioneDiv.addEventListener ('click', function (event) {
         
+            // console.log('dentro')
+            let elementoCliccato = this;
+            let numeroCasella = parseInt(elementoCliccato.innerHTML);
+            let numeroBomba = bombe.includes(numeroCasella);
 
+            console.log(numeroCasella , numeroBomba)
+
+            if ( numeroBomba ) {
+                elementoCliccato.classList.add('background-red');
+                gameOver();
+                restart(grigliaElement);
+            } else {
+                elementoCliccato.classList.add('background-light-blue');
+            }
+            
+            
+        })
     }
 
     
@@ -76,32 +104,54 @@ function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min); 
-  }
-
-
-
-// no numeri doppi
-// nuimeri compresi tra 1 3 numeroDiCelle
-// const bombe = [5, 54, 9, 21, 36, 74]
-// startGame()
-// bombe.includes('5')
-
-const bombe = [];
-let bomba;
-
-
-while ( bombe.length < 16 ) {
-
-    bomba = getRandomInt( 1 , celleTotali);
-
-    if(!bombe.includes(bomba)) {
-        bombe.push(bomba);
-    } else {
-        continue;
-    }
-
-    console.log(bomba , bombe.includes(bomba));
-
 }
 
-console.log(bombe)
+// Funzione Perso
+function gameOver () {
+    alert('Hai perso');
+}
+
+
+// La partita termina quando il giocatore clicca su una bomba o quando raggiunge il numero massimo possibile di numeri consentiti 
+// (ovvero quando ha rivelato tutte le celle che non sono bombe).
+// Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.
+
+// quando l'utente clicca su una cella
+
+    // SE il numero della cella è presente nella lista dei numeri generati 
+    //     cella background color red e gameOver
+
+    // ALTRIMENTI 
+    //     cella background color blue e l'utente può continuare a cliccare
+
+    // funzione GameEnd quando il giocatore clicca su una bomba o quando raggiunge il numero massimo possibile di numeri consentiti ( numeroCelleTotali - numeroBombe)
+
+    // Al termine della partita il software deve comnunicare il numero di volte che l'utente ha cliccato su una cella buona
+
+    // tipo fare un ciclo while con la condizione che la cella cliccata non sia una bomba e che incrementi il numero e alla fine stampiamo il numero
+
+    // while ( numeroBomba === false ) {
+    //     let caselleSelezionate;
+    //     elementoCliccato.classList.add('background-light-blue');
+    //     caselleSelezionate ++;
+    //     console.log(caselleSelezionate);
+    // } else {
+    //     elementoCliccato.classList.add('background-red');
+    //     gameOver();
+    //     restart(grigliaElement);
+    // }
+
+
+    // while ( !numeroBomba ) {
+    //     let caselleSelezionate;
+    //     elementoCliccato.classList.add('background-light-blue');
+    //     caselleSelezionate ++;
+    //     console.log(caselleSelezionate);
+    // }
+
+        
+    // elementoCliccato.classList.add('background-red');
+    // gameOver();
+    // restart(grigliaElement);
+
+
