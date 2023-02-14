@@ -13,6 +13,8 @@ console.log(playButtonElement);
 const grigliaElement = document.querySelector('.griglia');
 console.log(grigliaElement);
 
+let punteggio = 0;
+
 
 playButtonElement.addEventListener ('click' , function() {
 
@@ -23,7 +25,7 @@ playButtonElement.addEventListener ('click' , function() {
 
     // no numeri doppi / numeri compresi tra 1 e celle totali 
 
-    const bombe = [];
+    let bombe = [];
     let bomba;
 
     while ( bombe.length < 16 ) {
@@ -81,9 +83,13 @@ playButtonElement.addEventListener ('click' , function() {
                 restart(grigliaElement);
             } else {
                 elementoCliccato.classList.add('background-light-blue');
+                punteggio++;
+                console.log(punteggio);
             }
             
-            
+            // elementoCliccato.removeEventListener ( 'click' , function() {  al posto di function devo farne una io pesonalizzata sennò non funziona
+
+
         })
     }
 
@@ -109,6 +115,7 @@ function getRandomInt(min, max) {
 // Funzione Perso
 function gameOver () {
     alert('Hai perso');
+    punteggio = 0;
 }
 
 
